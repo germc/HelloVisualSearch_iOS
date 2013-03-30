@@ -21,6 +21,7 @@
     UIAlertView                 *_myLoading;
     CaptureSessionManager       *_captureManager;
     UIView                      *_cameraView;
+    UIImageView                 *_resPic;
 }
 
 @end
@@ -53,7 +54,7 @@
     
     
     ///// TESTS //////
-    [self addCropRect];
+    //[self addCropRect];
     
     //[self addQRRois];
 }
@@ -209,7 +210,7 @@
 
 - (void)processNewCameraFrameRGB:(CVImageBufferRef)cameraFrame
 {
-    [_myVs processRGBFrame:cameraFrame saveImageToPhotoAlbum:YES];
+    [_myVs processRGBFrame:cameraFrame saveImageToPhotoAlbum:NO ];
 }
 
 - (void)processNewCameraFrameYUV:(CVImageBufferRef)cameraFrame
@@ -227,7 +228,30 @@
         VSLog(@"Image detected --> %d", uId);
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            VSAlert(@"Image detected --> %d", uId);
+            
+            [_resPic setHidden:NO];
+            
+            if(_resPic == nil)
+            {
+                _resPic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"pic%d.jpg", uId]]];
+                [_resPic setFrame:CGRectMake(0, self.view.frame.size.height - 70, 100, 63)];
+                [self.view addSubview:_resPic];
+            }
+            else
+            {
+                [_resPic setImage:[UIImage imageNamed:[NSString stringWithFormat:@"pic%d.jpg", uId]]];
+            }
+            
+            //VSAlert(@"Image detected --> %d", uId);
+        });
+    }
+    else
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (_resPic != nil)
+            {
+                [_resPic setHidden:YES];
+            }
         });
     }
 }
