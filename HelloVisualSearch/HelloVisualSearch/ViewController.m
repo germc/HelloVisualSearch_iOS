@@ -150,7 +150,7 @@
         // Some more settings
         [_myVs setFilterWindow:7];
         [_myVs setMaxFeatures:75];
-        [_myVs setFrameSize:400];
+        [_myVs setFrameSize:300];
         
     }
 }
