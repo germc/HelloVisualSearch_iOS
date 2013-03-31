@@ -136,7 +136,7 @@
         
         // Set delegates
         [_myVs setImageDelegate:self];
-        [_myVs setQRDelegate:self];
+        [_myVs setQrDelegate:self];
         
         // Set detection threshold
         [_myVs setMatchingThreshold:5];
@@ -145,7 +145,12 @@
         [_myVs setSearchMode:search_all];
         
         // Add motion filter
-        [_myVs initMotionDetection];
+        [_myVs initMotionDetectionWithThreshold:3 enableDebugLog:YES];
+        
+        // Some more settings
+        [_myVs setFilterWindow:7];
+        [_myVs setMaxFeatures:75];
+        [_myVs setFrameSize:400];
         
     }
 }
@@ -157,7 +162,7 @@
         [_myVs removeMotionDetection];
         
         _myVs.imageDelegate = nil;
-        _myVs.QRDelegate    = nil;
+        _myVs.qrDelegate    = nil;
         _myVs               = nil;
     }
 }

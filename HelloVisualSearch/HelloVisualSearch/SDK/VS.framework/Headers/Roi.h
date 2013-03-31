@@ -1,37 +1,19 @@
 //
 //  Roi.h
+//  ARBarReader
 //
-//  VS Plugin
-//  Copyright (c) 2013 Aumentia. All rights reserved.
+//  Copyright (c) 2012 VPS. All rights reserved.
+//  Version 0.1
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-/**
- *  Region of interest.
- *  A maximum of 4 can be defined.
- *  The engine will look for QR / bar codes in the defined areas.
- */
 @interface Roi : NSObject
 
-
-/**
- *  @brief: Initialise a Region of Interest.
- *
- *  @param rect Frame that defines the ROI.
- */
--(id)initWithRect:(CGRect)rect;
-
-
-/**
- * Frame that defines the ROI.
- */
 @property (assign, nonatomic) CGRect roiRect;
+@property (strong, nonatomic) NSString* qrString;
 
-/**
- * String read from the QR / bar code.
- */
-@property (strong, readonly) NSString* qrString;
+-(id)initWithRect:(CGRect)rect;
 
 @end
