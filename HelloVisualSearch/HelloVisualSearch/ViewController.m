@@ -145,12 +145,12 @@
         [_myVs setSearchMode:search_all];
         
         // Add motion filter
-        [_myVs initMotionDetectionWithThreshold:3 enableDebugLog:YES];
+        [_myVs initMotionDetectionWithThreshold:3 enableDebugLog:NO];
         
         // Some more settings
-        [_myVs setFilterWindow:7];
-        [_myVs setMaxFeatures:75];
-        [_myVs setFrameSize:300];
+//        [_myVs setFilterWindow:5];
+//        [_myVs setMaxFeatures:50];
+//        [_myVs setFrameSize:250];
         
     }
 }
