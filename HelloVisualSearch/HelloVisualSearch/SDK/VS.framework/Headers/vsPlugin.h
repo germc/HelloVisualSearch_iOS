@@ -37,6 +37,8 @@ typedef enum
  */
 -(void)imageMatchedResult:(NSInteger)uId ;
 
+-(void)trainedImageAdded:(NSInteger)uId;
+
 @end
 
 
@@ -75,7 +77,7 @@ typedef enum
  *
  *  @param codes Array of found ROIs. Each ROI has a CGRect defining the crop rectangle and the QR string response.
  */
--(void)multipleQRMatchedResult:(NSArray*)codes ;
+-(void)multipleQRMatchedResult:(NSArray*)codes;
 
 @end
 
@@ -138,6 +140,15 @@ __attribute__((__visibility__("default"))) @interface vsPlugin : UIViewControlle
 - (BOOL) insertImageFromURL:(NSURL*)imageUrl withId:(NSInteger)uId vs_AVAILABLE(vs_V_0_1_1);
 
 
+- (BOOL) addImageFromData:(NSData*)data withUniqeID:(NSNumber*)uId;
+
+- (void)addTrainedImage:(UIImage*)image;
+
+- (NSNumber*) addImageFromDataThroughUrl:(NSURL*)url;
+
+- (NSNumber*) insertImageFromDataWithPath:(NSString*)path;
+
+- (BOOL) insertImageFromDataWithPath:(NSString*)path withUniqeID:(NSNumber*)uId;
 
 /** @name Remove Images */
 
